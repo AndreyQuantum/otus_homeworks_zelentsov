@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Products
+{% endblock %}
+
+
+{% block body %}
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                <th scope="col">Product</th>
+                <th scope="col">Price</th>
+                <th scope="col">Description</th>
+                </tr>
+            </thead>
+        <tbody>
+        {% for product in products  %}
+            <tr>
+                <td>
+            <a href="{{ url_for(
+            'shop.details', product_id=product.id) }}">
+                {{product.name}}
+            </a>
+                </td>
+                 <td>
+                {{product.price}}
+                </td>
+                 <td>
+                {{product.description}}
+                </td>
+        {% endfor  %}
+            </tr>
+        </tbody>
+        </table>
+    </div>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %}
+    Products #{{product.id}}
+{% endblock %}
+
+{% block body %}
+    <b>Product</b>
+    {{product.name}}
+<br>
+    <b>Price</b>
+    {{product.price}}
+    <br>
+    <b>Description</b>
+    {{product.description}}
+    <br>
+    <br>
+    <div>
+        <a href="{{ url_for(
+                'shop.list') }}">
+                Back to list
+        </a>
+    <br>
+    <br>
+
+    <br>
+    <br>
+        <button type="button" class="btn btn-danger" id="delete-product" onclick="deleteItem()">Delete {{product.name}}</button>
+                <button type="button" class="btn btn-secondary">
+                <a href="/products/{{product.id}}/change/" style=color:white;text-decoration:initial>
+            Change {{product.name}}
+        </a>
+            </button>
+    </div>
+
+<script src="{{ url_for('static', filename='js/product.js') }}"></script>
+
+{% endblock %}
