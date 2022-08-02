@@ -25,9 +25,9 @@ SECRET_KEY = 'django-insecure-fr(71hy)qf+(34)tphn9!4j^0uj%e5asor-$j*f49#amih74k@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost:8000",
+ALLOWED_HOSTS = ["localhost",
                  "127.0.0.1",
-                 "0.0.0.0:8000"]
+                 ]
 
 
 # Application definition
@@ -39,7 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'shopapp.apps.ShopConfig'
+    #site packages
+    'debug_toolbar',
+    # my packages
+    'shopapp.apps.ShopConfig',
 ]
 
 MIDDLEWARE = [
@@ -50,6 +53,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
 ]
 
 ROOT_URLCONF = 'clothes_shop.urls'

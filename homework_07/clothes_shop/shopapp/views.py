@@ -5,14 +5,14 @@ from .models import Product
 # Create your views here.
 
 def index(request: HttpRequest):
-    products = Product.objects.all()
+    products = Product.objects.select_related("kind").order_by('id').all()
     context = {
         "products" : products
     }
     return render(request, 'shopapp/index.html', context = context)
 
 def details(request: HttpRequest, id: int):
-    product = get_object_or_404(Product, pk=id)
+    product = get_object_or_404(Product.objects.select_related("kind"), pk=id)
     context = {
         "product" : product
     }

@@ -10,7 +10,6 @@ This is a main list of products
     {% for product in products %}
         <li>
         <a href="{% url 'shopapp:details' product.id %}">{{ product.name }}</a>
-        description: {{ product.description }}
         </li>
     {% endfor %}
     </ul>
