@@ -1,0 +1,21 @@
+{% extends 'shopapp/base.html' %}
+
+{% block title %}
+ {{ product.name }}
+{% endblock %}
+{% block head %}
+    {{ product.name }}
+{% endblock %}
+
+{% block body %}
+    <div>
+        <li>Description: {{ product.description}}</li>
+    <ul>
+        Available sizes:
+        {% for size_element in product.size.all %}
+            <li>{{ size_element.name }}, EU:{{ size_element.eu }}, USA: {{ size_element.usa }}, JPN: {{ size_element.jpn }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'shopapp:list' %}">Back to Products list</a>
+    </div>
+{% endblock %}

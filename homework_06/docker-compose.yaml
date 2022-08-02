@@ -7,7 +7,7 @@ services:
       dockerfile: ./docker-files/Dockerfile
     environment:
       CONFIG: ProductionConfig
-      SQLALCHEMY_DATABASE_URI: postgresql+pg8000://shop:shop@pg:5432/shop
+      SQLALCHEMY_DATABASE_URI: postgresql+pg8000://shopapp:shopapp@pg:5432/shopapp
     ports:
       - "8000:80"
     depends_on:
@@ -16,12 +16,12 @@ services:
   pg:
     image: postgres
     environment:
-      POSTGRES_DB: shop
-      POSTGRES_USER: shop
-      POSTGRES_PASSWORD: shop
+      POSTGRES_DB: shopapp
+      POSTGRES_USER: shopapp
+      POSTGRES_PASSWORD: shopapp
       PGDATA: /var/lib/postgresql/data/pgdata
     volumes:
-      - shop-pg-data:/var/lib/postgresql/data/pgdata
+      - shopapp-pg-data:/var/lib/postgresql/data/pgdata
     ports:
       - "5432:5432"
     healthcheck:

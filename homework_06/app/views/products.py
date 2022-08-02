@@ -28,12 +28,12 @@ from models.database import db
 
 log = logging.getLogger(__name__)
 
-products_app = Blueprint("shop", __name__)
+products_app = Blueprint("shopapp", __name__)
 
 page_dict = {
     "Home": "home",
-    "All products": "shop.list",
-    "Add product": "shop.add",
+    "All products": "shopapp.list",
+    "Add product": "shopapp.add",
 }
 
 
@@ -71,7 +71,7 @@ def get_product_id(product_id: int):
     db.session.delete(product)
     db.session.commit()
     flash(f"{product.name} was deleted", "warning")
-    url = url_for("shop.list")
+    url = url_for("shopapp.list")
     return {"ok": True, "url": url}
 
 
@@ -123,7 +123,7 @@ def add_product():
         raise BadRequest("Bad name")
 
     flash(f"{product.name} was created", "success")
-    url = url_for("shop.details", product_id=product.id)
+    url = url_for("shopapp.details", product_id=product.id)
     return redirect(url)
 
 
@@ -164,5 +164,5 @@ def change_product(product_id: int):
         flash(f"{product.name} description was changed", "warning")
     if not (product_name or product_price or product_description):
         flash(f"{product.name} was not changed", "warning")
-    url = url_for("shop.details", product_id=product.id)
+    url = url_for("shopapp.details", product_id=product.id)
     return redirect(url)
