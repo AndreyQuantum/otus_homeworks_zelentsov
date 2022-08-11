@@ -6,6 +6,8 @@ done
 python manage.py makemigrations
 python manage.py migrate
 
+./manage.py test
+
 DJANGO_SUPERUSER_PASSWORD=administrator
 export DJANGO_SUPERUSER_PASSWORD
 DJANGO_SUPERUSER_EMAIL=administrator@admin.com

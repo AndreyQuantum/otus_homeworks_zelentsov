@@ -10,3 +10,7 @@ urlpatterns = [
     path('<int:pk>/', ProductDetailView.as_view(), name="details"),
     path("by_type/<str:kind_name>", ProductKindListView.as_view(), name="kind_list"),
 ]
+
+
+
+
