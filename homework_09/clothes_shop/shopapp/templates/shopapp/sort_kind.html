@@ -1,0 +1,16 @@
+{% extends 'shopapp/base.html' %}
+{% block title %}
+    List of products
+{% endblock %}
+{% block head %}
+Choose product kind to view sorted list of products:
+{% endblock %}
+{% block body %}
+    <ul>
+    {% for kind in kinds %}
+        <li>
+        <a href="{% url 'shopapp:kind_list' kind.name %}">{{ kind.name }}</a>
+        </li>
+    {% endfor %}
+    </ul>
+{% endblock %}
