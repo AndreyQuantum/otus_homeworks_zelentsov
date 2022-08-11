@@ -1,0 +1,27 @@
+version: "3"
+services:
+  database:
+     image: postgres
+     volumes:
+       - shop_db:/var/lib/postgresql/data/
+     ports:
+       - "5432:5432"
+     environment:
+       - POSTGRES_DB=postgres
+       - POSTGRES_USER=postgres
+       - POSTGRES_PASSWORD=postgres
+     networks:
+       - shop_network
+  shop:
+    build: ./clothes_shop/
+    entrypoint: /startup.sh
+    ports:
+      - "8000:8000"
+    networks:
+      - shop_network
+    depends_on:
+      - database
+volumes:
+  shop_db:
+networks:
+  shop_network:
