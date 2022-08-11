@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+    {% block title %}
+
+    {% endblock %}
+    </title>
+<h1>
+{% block head %}
+{% endblock %}
+</h1>
+</head>
+<body>
+{% block login_field %}
+    {% if not user.is_authenticated %}
+    <a href="{% url 'siteauth:login' %}">Login</a>
+    <br>
+    <a href="{% url 'siteauth:register' %}">Register</a>
+    {% endif %}
+    {% if user.is_authenticated %}
+    <a href="{% url 'siteauth:logout' %}">Logout</a>
+    {% endif %}
+    <br>
+{% endblock %}
+{% block body %}
+
+{% endblock %}
+</body>
+</html>
