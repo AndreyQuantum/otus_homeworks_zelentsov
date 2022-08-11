@@ -1,0 +1,19 @@
+{% extends 'shopapp/base.html' %}
+{% block title %}
+    List of products
+{% endblock %}
+{% block head %}
+Sorted list of products
+{% endblock %}
+{% block body %}
+    <a href="{% url 'shopapp:list' %}">back to main page</a>
+    <br>
+    <a href="{% url 'shopapp:sort_by_kind' %}">back to kind sorting</a>
+    <ul>
+    {% for product in products %}
+        <li>
+        <a href="{% url 'shopapp:details' product.id %}">{{ product.name }}</a>
+        </li>
+    {% endfor %}
+    </ul>
+{% endblock %}
